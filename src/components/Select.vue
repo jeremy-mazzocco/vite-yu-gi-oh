@@ -14,7 +14,7 @@ export default {
 
 
 <template>
-    <select @change="$emit('myArchetype')">
+    <select @change="$emit('myArchetype')" v-model="store.selectedArchetype">
         <option v-for="archet in store.dataArchetype" :value="archet.archetype_name">{{
             archet.archetype_name }}</option>
     </select>
