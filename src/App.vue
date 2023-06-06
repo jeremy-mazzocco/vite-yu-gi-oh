@@ -2,10 +2,12 @@
 import { store } from './store';
 import axios from 'axios';
 import List from './components/List.vue';
+import Select from "./components/Select.vue";
 
 export default {
   components: {
-    List
+    List,
+    Select
   },
   data() {
     return {
@@ -21,10 +23,21 @@ export default {
         .catch(err => {
           console.log(err);
         })
+    },
+    getApiArchetype() {
+      axios.get("https://db.ygoprodeck.com/api/v7/archetypes.php")
+        .then(reponse => {
+          store.dataArchetype = reponse.data;
+          console.log(store.dataArchetype);
+        })
+        .catch(err => {
+          console.log(err);
+        })
     }
   },
   created() {
     this.getApiData();
+    this.getApiArchetype();
   }
 }
 
@@ -39,9 +52,7 @@ export default {
   </header>
   <main>
     <div class="container">
-      <select name="" id="">
-        <option value="Alien">Alien</option>
-      </select>
+      <Select />
     </div>
     <div class="container" id="bcc-card">
       <List />
