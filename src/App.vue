@@ -16,7 +16,7 @@ export default {
   },
   methods: {
     getApiData() {
-      axios.get("https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0")
+      axios.get("https://db.ygoprodeck.com/api/v7/cardinfo.php?num=100&offset=0")
         .then(reponse => {
           store.dataList = reponse.data.data;
         })
@@ -28,7 +28,6 @@ export default {
       axios.get("https://db.ygoprodeck.com/api/v7/archetypes.php")
         .then(reponse => {
           store.dataArchetype = reponse.data;
-          console.log(store.dataArchetype);
         })
         .catch(err => {
           console.log(err);
@@ -52,7 +51,7 @@ export default {
   </header>
   <main>
     <div class="container">
-      <Select />
+      <Select @myArchetype=getApiData() />
     </div>
     <div class="container" id="bcc-card">
       <List />
