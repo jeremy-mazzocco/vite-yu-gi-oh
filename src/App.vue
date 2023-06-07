@@ -26,6 +26,7 @@ export default {
       axios.get(myURL)
         .then(reponse => {
           store.dataList = reponse.data.data;
+          store.loading = false;
         })
         .catch(err => {
           console.log(err);
@@ -59,6 +60,9 @@ export default {
   <main>
     <div class="container">
       <Select @myArchetype=getApiData() />
+      <p>
+        Total cards: {{ }}
+      </p>
     </div>
     <div class="container" id="bcc-card">
       <List />

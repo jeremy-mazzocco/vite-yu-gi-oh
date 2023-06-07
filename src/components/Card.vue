@@ -1,9 +1,15 @@
 <script>
+import { store } from "../store";
 
 export default {
     name: "Card",
     props: {
         details: Object,
+    },
+    data() {
+        return {
+            store,
+        }
     }
 }
 
@@ -19,7 +25,7 @@ export default {
             {{ details.name }}
         </h3>
         <p>
-            Alien
+            {{ store.selectedArchetype }}
         </p>
     </div>
 </template>
